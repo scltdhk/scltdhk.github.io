@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solitaire Classic Limited</title>
+    <!--设置ico图标-->
+    <link rel="shortcut icon" href="image/ico.ico">
+    <link rel="stylesheet" href="dist/css/style.css">
+    
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="#">
+                                <img src="image/icon.png" width="256" height="128" viewBox="0 0 48 48" />
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h1 class="hero-title h2-mobile mt-0 is-revealing">Solitaire Classic</h1>
+                            <p class="hero-paragraph is-revealing">Classic Solitaire is a puzzle game that will exercise your brain. And it is an offline game, you can play it anytime and anywhere. Download it now and play the best classic solitaire game for free!</p>
+                            <p class="hero-cta is-revealing"><a class="button button-primary button-shadow" href="https://play.google.com/store/apps/details?id=com.standard.puzzle.solitaire" target="_blank">Google Play</a>
+                            <p class="hero-cta2 is-revealing"><a class="button button-primary button-shadow" href="https://apps.apple.com/US/app/id6462871973" target="_blank">App Store</a>
+                        </div>
+                        <div class="hero-illustration is-revealing">
+							<img src="image/control.png" width="586" height="443" viewBox="0 0 586 443" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer class="site-footer text-light">
+            <div class="container">
+                <div class="site-footer-inner has-top-divider">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                            
+                        </a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                            <a href="https://weibo.com/inkem" target="_blank"></a>
+                        </li>
+                    </ul>
+                    <ul class="footer-social-links list-reset">
+                    </ul>
+                    <div class="footer-copyright">2023 &copy;Standard Game Limited. Contact: support@standardpuzzle.com</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDOXgUlkltnFb8FOSOjMsP8zEdMeVNqdMk",
+      authDomain: "standardpuzzle-com.firebaseapp.com",
+      projectId: "standardpuzzle-com",
+      storageBucket: "standardpuzzle-com.appspot.com",
+      messagingSenderId: "853959285351",
+      appId: "1:853959285351:web:d87139d4eaabbc5840d2c2",
+      measurementId: "G-JFL8FR4GMQ"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>
