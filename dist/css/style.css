@@ -303,7 +303,7 @@ html {
     }
     
     body {
-        color: #ffffff;
+        color: #f5e8c1;
         font-size: 1rem
     }
     
@@ -1431,11 +1431,11 @@ html {
     }
     
     .is-boxed {
-        background: #2e2edd;
+        background: #023922;
     }
     
     .body-wrap {
-        background: #2e2edd;
+        background: #023922;
         overflow: hidden;
         display: flex;
         flex-direction: column;
