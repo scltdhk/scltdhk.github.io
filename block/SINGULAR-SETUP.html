@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BLOCKDOKU Singular 网站配置说明</title><style>body{font:17px/1.75 system-ui;max-width:960px;margin:32px auto;padding:0 20px;color:#25392d;background:#faf8f1}h1,h2{line-height:1.35}h2{margin-top:38px}table{width:100%;border-collapse:collapse;font-size:15px}td,th{border:1px solid #cbcfc5;padding:10px;text-align:left;overflow-wrap:anywhere}code{background:#eceee5;padding:2px 5px;overflow-wrap:anywhere}a{color:#175e86}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eceee5;padding:18px}.status{padding:18px;background:#fff0cb;border-left:4px solid #b48327}</style>
+<h1>BLOCKDOKU：网站下载入口与 Singular 配置</h1><p>更新：2026-11-20。以下后台名称依据官方文档，未登录您的 Singular 账号；账户权限和界面版本可能不同。建议值均明确标记，不冒充已创建的配置。</p>
+<div class="status"><b>当前状态：代码已准备，正式接入未启用。</b><br>您尚未创建 Web SDK 配置和 Web-to-App 链接。网站 enabled=false，不加载 Singular、不写剪切板；下载按钮仍在新标签页打开临时 Google 地址。Unity 当前 ProductInstallSource.json 也是 disabled。后台配置完成、网站填入真实值、客户端重新打包后才能做完整验证。</div>
+<h2>1. 先联系 Singular 开通功能并取得专用链接</h2>
+<p>请先向 Singular 客户经理发送下面这段信息。Web Attribution 是企业功能；官方要求由客户经理提供 Web-to-App baselink，不能随便创建一条普通投放链接当成它使用。依据：<a href="https://support.singular.net/hc/en-us/articles/41863502734619-Web-SDK-Native-JavaScript-Implementation-Guide">Web SDK 接入说明</a>、<a href="https://support.singular.net/hc/en-us/articles/360042283811-Website-to-Mobile-App-Attribution-Forwarding-for-Mobile-Web">Web-to-App 配置说明</a>。</p>
+<pre>请为我们开通/确认 Web Attribution 与 Clipboard-Based DDL 权限，并提供 BLOCKDOKU iOS 的 Mobile Web-to-App baselink。
+网站：https://www.scltdhk.com/block/
+iOS Bundle ID：com.standard.puzzle.doku.block.ios
+建议 Web App 名称：BLOCKDOKU Website
+建议 Web App Product ID / bundle ID：com.scltdhk.block.web
+客户端 App Scheme：blockdoku-bdki
+用途：网站下载按钮通过 Web SDK 传递首次安装策略，支持 1 次或 2 次首次广告。
+请确认可用于公开网页的 SDK Key / SDK Secret、Web App ID，以及专用 baselink 的商店跳转配置。
+我们需要在 TestFlight 阶段先做链路联调，请确认账号是否支持这种测试方式；正式验收仍走 App Store 安装。</pre>
+<h2>2. 在后台准备网站与 iOS 应用信息</h2>
+<p>在 <b>Settings → Apps</b> 核对应用。若不能新建 Web 类型，请让客户经理创建，不要把 Web Product ID 填成 iOS 包名。Web SDK 的 Product ID 必须与后台 Web App bundle ID 一致。<a href="https://support.singular.net/hc/en-us/articles/41863502734619-Web-SDK-Native-JavaScript-Implementation-Guide">官方字段说明</a></p>
+<table><tr><th>对象 / 字段</th><th>填写内容</th></tr><tr><td>网站名称（建议）</td><td>BLOCKDOKU Website</td></tr><tr><td>网站 Product ID（建议）</td><td><code>com.scltdhk.block.web</code>；如客户经理分配其他值，以实际值为准并同步给开发。</td></tr><tr><td>网站地址</td><td>https://www.scltdhk.com/block/</td></tr><tr><td>iOS 应用 Bundle ID</td><td><code>com.standard.puzzle.doku.block.ios</code></td></tr><tr><td>iOS 高级设置 → Team ID</td><td>填写该应用真实 Apple Developer Team ID，不能填个人 Apple ID 或占位字符串。</td></tr><tr><td>iOS App Scheme</td><td><code>blockdoku-bdki</code>（不要带 ://）</td></tr><tr><td>iOS 商店地址</td><td>填写这款游戏的真实 App Store URL。目前网页的 Google 地址只是占位，不能用于安装归因验收。</td></tr></table>
+<p>Team ID 和 Scheme 位于 iOS 应用展开后的高级设置。对应 Apple 应用需开启 Associated Domains，客户端加入实际 Singular 域名。<a href="https://support.singular.net/hc/en-us/articles/360031371451-Singular-Links-Prerequisites">官方 iOS 前置配置</a></p>
+<p>在 <b>Developer Tools → SDK Integration → SDK Keys</b> 获取经过确认可用于 Web SDK 的 SDK Key 和 SDK Secret。网页运行所需的这两个值会公开给浏览器；不要发管理、报表 API 凭据，也不要直接复用本地手机凭据文件。<a href="https://support.singular.net/hc/en-us/articles/41863502734619-Web-SDK-Native-JavaScript-Implementation-Guide">官方凭据入口</a></p>
+<h2>3. 准备域名和下载后的目标</h2>
+<p>进入 <b>Attribution → Manage Links → Manage Link Domains</b>，选择已有域名或创建公司域名。最终把实际 <code>xxx.sng.link</code> 域名交给开发。客户经理提供专用链接后，在 Manage Links 核对其 iOS 应用、商店地址和跳转设置。以下目标字段是官方链接配置字段；专用链接若不能自行编辑，请交给客户经理设置。<a href="https://support.singular.net/hc/en-us/articles/360050910891-How-to-Configure-Deep-Links">官方后台操作说明</a></p>
+<table><tr><th>字段</th><th>本项目处理</th></tr><tr><td>If the app is not installed go to</td><td>真实 BLOCKDOKU App Store 地址。不要填回 /block/，否则下载按钮可能再次返回本页。</td></tr><tr><td>If the app is already installed, go to: (deep link)</td><td>由网页 SDK 调用传入下面的目标。已安装用户不会重新应用首次广告策略。</td></tr><tr><td>After installation, go directly to: (deferred deep link)</td><td>由网页 SDK 调用按入口传入下面的目标。不需要在一个公共 baselink 上写死 1 次或 2 次。</td></tr></table>
+<h2>4. 网页向 SDK 传什么，剪切板到底存什么</h2>
+<p>下面四种是本项目定义的固定入口，不是 Singular 自动创建的参数。<code>entry</code> 只选择预先审核的广告策略，不证明实际投放来源。UTM / WP 参数用于来源统计，二者不能混为一谈。</p>
+<table><tr><th>网页入口</th><th>客户端策略</th><th>SDK passthrough</th></tr><tr><td>/block/?entry=one-clipboard</td><td>first_ad_1</td><td>block_startup_v1:clipboard</td></tr><tr><td>/block/?entry=two-clipboard</td><td>first_ad_2</td><td>block_startup_v1:clipboard</td></tr><tr><td>/block/?entry=one-ordinary</td><td>first_ad_1</td><td>block_startup_v1:ordinary</td></tr><tr><td>/block/?entry=two-ordinary</td><td>first_ad_2</td><td>block_startup_v1:ordinary</td></tr></table>
+<p>示例：两次广告的剪切板入口，用户在 iPhone 上点击 App Store 按钮，网页同步调用：</p>
+<pre>const target = 'blockdoku-bdki://startup?policy=first_ad_2&amp;v=1';
+const link = singularSdk.buildWebToAppLink(
+  实际专用baselink,
+  target,                         // 已安装打开目标
+  'block_startup_v1:clipboard',    // 入口标记
+  target                          // 首次安装后的目标
+);
+const destination = singularSdk.enrichUrlWithClipboardDdlFlow(link);
+// 按钮 href 更新为 destination；保持 target="_blank"。</pre>
+<p>剪切板数据由 SDK 创建，不由我们拼 JSON 或复制 target 字符串。官方说明 SDK 生成 token、写入剪切板并将 ecid 附到链接；手机 SDK 再据此匹配和取得延迟链接。调用必须发生在点击事件内。页面会显示剪切板用途并允许取消；取消后使用普通标记。<a href="https://support.singular.net/hc/en-us/articles/5626161387419-Clipboard-Based-DDL-FAQ">官方剪切板流程和限制</a>、<a href="https://support.singular.net/hc/en-us/articles/41863502734619-Web-SDK-Native-JavaScript-Implementation-Guide">官方方法签名</a></p>
+<p>代码不会读取或记录用户剪切板，不人工生成 token。函数返回链接只说明调用返回，不证明复制成功。用户覆盖剪切板、拒绝粘贴或网络失败，均可能无法恢复策略。客户端收到 clipboard 标记也只代表该入口选择了剪切板流程，不能当成成功匹配凭证。</p>
+<h2>5. 后台准备好后，把这些信息给开发</h2>
+<table><tr><th>配置项</th><th>当前值 / 下一步</th></tr><tr><td>enabled</td><td>false；真实配置完整后由开发改为 true。</td></tr><tr><td>sdkKey / sdkSecret</td><td>空；提供允许用于浏览器的 Web SDK 值。</td></tr><tr><td>productId</td><td>com.scltdhk.block.web；确认和后台完全一致。</td></tr><tr><td>iosBaseLink</td><td>空；提供客户经理配置的完整 https://…sng.link/… 链接。</td></tr><tr><td>iosStoreUrl</td><td>空；提供真实 App Store 地址。</td></tr><tr><td>androidBaseLink / androidStoreUrl</td><td>当前不启用 Android，保持空。</td></tr></table>
+<p>代码位于网站仓库 <code>block/singular-config.js</code> 与 <code>block/singular-integration.js</code>。配置修改后更新 index.html 中脚本版本号，提交 main 触发 GitHub Pages。SDK 异步加载，不阻塞画面；未准备好时保留原下载链接，不等待或补写剪切板。</p>
+<h2>6. 客户端同步与验收</h2>
+<p>本项目源码已支持 <code>blockdoku-bdki://startup?policy=first_ad_1&amp;v=1</code> 和 <code>first_ad_2</code>。当前配置仍关闭；后续将 <code>Assets/Resources/ProductInstallSource.json</code> 的 mode 改为 <code>clipboard</code>、linkDomain 填真实域名后重新打包。此模式也接收普通延迟链接。不要把测试菜单的“手动读取剪切板”当成 Singular 安装归因。</p>
+<p>首次安装、有效延迟回调、原启动收集窗口内才应用。剪切板入口优先，普通延迟入口其次；没有数据、错误数据、超时或老安装继续原云控及兜底。地区封顶、原关闭广告和初始化失败等保护仍优先。入口“2 次”不保证一定展示两次：地区策略、无填充等仍会限制。</p>
+<ol><li>网页：开发者工具 Network 查看官方 1.4.8 SDK 和初始化请求；<code>document.documentElement.dataset.singularState</code> 应为 ready。disabled 是尚未启用，ready 仅表示 SDK 初始化回调。</li><li>在同一台 iPhone 的 Safari 打开测试入口；点击前不写剪切板。点击 App Store 后新标签页链接应包含 SDK 生成的参数。<code>singularLastAction=clipboard_requested</code> 只记录调用尝试，不表示成功归因。</li><li>安装重新打包的测试应用，正常处理系统粘贴提示，期间不要复制其他内容。观察 <code>INSTALL_SOURCE_CALLBACK deferred=True result=received policy=first_ad_1/first_ad_2</code>，再核对启动冻结后的实际策略。</li><li>重复测试两种次数、普通方式、取消剪切板、错误入口、无参数入口、SDK 被拦截和网络超时。页面不得卡住，原商业化不得被无效输入覆盖。</li><li>Singular 后台核对测试设备安装与来源。测试网页点击、原生 SDK 回调、后台实际接收分别记录；没有接收证据不能写“归因通过”。</li></ol>
+<p>官方剪切板 FAQ 描述的是商店安装流程，没有给出 TestFlight 完整归因保证。TestFlight 先做经客户经理确认的联调；正式商店安装再验收整条链路。<a href="https://support.singular.net/hc/en-us/articles/5626161387419-Clipboard-Based-DDL-FAQ">官方支持边界</a></p>
+<h2>7. Mintegral 投放入口怎么放</h2>
+<p>本轮只准备网站参数，不修改 Mintegral campaign。可用测试网页地址：<code>https://www.scltdhk.com/block/?entry=two-clipboard&amp;utm_source=mintegral&amp;utm_campaign=block_web_test_2</code>。其中 campaign 是本项目建议的联调名称，不是已存在投放。正式 click ID、宏和渠道追踪链接必须让 Singular / Mintegral 确认，不能靠手填 utm_source 冒充广告平台点击。</p>
+<p>网页 SDK 把页面的 UTM/WP 信息传到专用链接，真正归因仍由 Singular 处理。页面本身不会因为名字含 mintegral 就认定付费用户。<a href="https://support.singular.net/hc/en-us/articles/360042283811-Website-to-Mobile-App-Attribution-Forwarding-for-Mobile-Web">官方参数传递与报表说明</a></p>
+</html>
