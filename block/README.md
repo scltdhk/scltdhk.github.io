@@ -21,6 +21,8 @@ Hero and carved wordmark were produced with image_gen from the approved forest d
 GitHub Pages builds main at repository root. Preserve CNAME and app-ads.txt. The company homepage includes a link to this product route.
 
 ## Wide-screen composition
-The whole page is capped at 1200 CSS pixels and centered. Wider screens have full-height frosted gutters using a 720×740 crop of only the left forest from the hero source. Both gutters use this same forest crop, excluding the board and tabletop. Each gutter fits independently instead of enlarging the entire hero across the viewport. A static 8px blur softens foliage; there is no scroll script. The additional WebP is 30,368 bytes. Desktop typography stops scaling at the content boundary. Smaller screens retain their existing responsive layout. Previous hashed CSS is retained for cached HTML.
+The whole page is capped at 1200 CSS pixels and centered. Wider screens have full-height frosted gutters using a 540×360 crop (source x=170, y=220) of only the clean distant forest from the hero source. Both gutters use this same forest crop, excluding foreground branches, leaves, board and tabletop. Each gutter fits independently instead of enlarging the entire hero across the viewport. A static 4px blur softens foliage; there is no scroll script. The additional WebP is 2,160 bytes. Desktop typography stops scaling at the content boundary. Smaller screens retain their existing responsive layout. Previous hashed CSS is retained for cached HTML.
 
 Buttons use a single 1px border, restrained wood grain, a 1px inset highlight and a short 2px side/contact edge instead of the previous stacked thick rims.
+
+The download controls have an opaque gold fallback and no parent entrance fade. Texture downloads cannot expose the scene through the buttons. Gallery sizes now match the 1200px container limit (280px cards).
