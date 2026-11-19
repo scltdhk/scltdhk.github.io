@@ -3,7 +3,7 @@
 Static GitHub Pages route: `/block/`. No build step, external fonts, JavaScript or service worker.
 
 ## Store links
-Both download links currently point to `https://www.google.com/` as requested. Replace `.store` hrefs in index.html when verified store links are available.
+Both download links currently point to `https://www.google.com/` as requested. Both open a new tab with `target="_blank"` and `rel="noopener noreferrer"`. Replace `.store` hrefs in index.html when verified store links are available.
 
 ## Loading and cache updates
 - Two media-specific hero preloads: mobile 960px, desktop 1584px. CSS uses the same exact URL as its matching preload.
@@ -21,6 +21,6 @@ Hero and carved wordmark were produced with image_gen from the approved forest d
 GitHub Pages builds main at repository root. Preserve CNAME and app-ads.txt. The company homepage includes a link to this product route.
 
 ## Wide-screen composition
-The whole page is capped at 1200 CSS pixels and centered. Above that width, short same-scale reflected edge strips follow each section and fade out quickly into a quiet surrounding color. A slight 4px blur softens the forest boundary; there is no enlarged viewport-cover image or scroll script. Desktop typography stops scaling at the same boundary. Smaller screens retain their existing responsive layout. Previous hashed CSS is retained for cached HTML.
+The whole page is capped at 1200 CSS pixels and centered. Wider screens have full-height frosted gutters using a 720×740 crop of only the left forest from the hero source. Both gutters use this same forest crop, excluding the board and tabletop. Each gutter fits independently instead of enlarging the entire hero across the viewport. A static 8px blur softens foliage; there is no scroll script. The additional WebP is 30,368 bytes. Desktop typography stops scaling at the content boundary. Smaller screens retain their existing responsive layout. Previous hashed CSS is retained for cached HTML.
 
 Buttons use a single 1px border, restrained wood grain, a 1px inset highlight and a short 2px side/contact edge instead of the previous stacked thick rims.
