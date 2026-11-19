@@ -21,4 +21,6 @@ Hero and carved wordmark were produced with image_gen from the approved forest d
 GitHub Pages builds main at repository root. Preserve CNAME and app-ads.txt. The company homepage includes a link to this product route.
 
 ## Wide-screen composition
-The whole page is capped at 1200 CSS pixels and centered. Above that width, a fixed blurred copy of the cached forest fills the side gutters. Desktop typography stops scaling at the same boundary. Smaller screens retain their existing responsive layout. Previous hashed CSS is retained for cached HTML.
+The whole page is capped at 1200 CSS pixels and centered. Above that width, short same-scale reflected edge strips follow each section and fade out quickly into a quiet surrounding color. A slight 4px blur softens the forest boundary; there is no enlarged viewport-cover image or scroll script. Desktop typography stops scaling at the same boundary. Smaller screens retain their existing responsive layout. Previous hashed CSS is retained for cached HTML.
+
+Buttons use a single 1px border, restrained wood grain, a 1px inset highlight and a short 2px side/contact edge instead of the previous stacked thick rims.
